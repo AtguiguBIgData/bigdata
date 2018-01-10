@@ -1,0 +1,127 @@
+<div>
+  <h3><span class="icon-uniE18E" aria-hidden="true" style="font-size: 20px;"></span> 统计实时分析</h3>
+  <p class="descri">MovieLens guess what movies you like <a [routerLink]="['/explore', { type: 'guess' }]" >更多...</a></p>
+
+  <button type="button" class="btn btn-primary" (click)="openModal(realtimeanalysis)" style="margin-bottom: 10px">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加调度
+  </button>
+
+  <ng-template #realtimeanalysis>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">添加实时统计程序</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form>
+        <div class="form-group">
+          <label for="realtimeAnalysisTitle">任务标题</label>
+          <input type="email" class="form-control" id="realtimeAnalysisTitle" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="realtimeAnalysisJar">选择程序</label>
+          <input type="password" class="form-control" id="realtimeAnalysisJar" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+      </form>
+
+    </div>
+  </ng-template>
+
+  <div class="grid grid-pad">
+    <div class="row table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>任务名称</th>
+          <th>运行Jar包</th>
+          <th>程序类型</th>
+          <th>运行状态</th>
+          <th>动作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of realtimeTasks">
+          <th scope="row">{{task.title}}</th>
+          <td>{{task.jarname}}</td>
+          <td>{{task.type}}</td>
+          <td>{{task.state}}</td>
+          <td style="width: 50px;">
+            <button type="button" class="btn btn-xs" [ngClass]="{'btn-danger': task.state!=3, 'btn-primary': task.state==3}" (click)="openModal(realtimeanalysis)">
+              <span class="glyphicon"  [ngClass]="{'glyphicon-remove': task.state!=3, 'glyphicon-play': task.state==3}" aria-hidden="true"></span>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <h3><span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size: 20px;"></span> 统计离线分析</h3>
+  <p class="descri">the movies most recently added to MovieLens <a [routerLink]="['/explore', { type: 'wish' }]" >更多...</a></p>
+
+  <button type="button" class="btn btn-primary" (click)="openModal(offlineanalysis)" style="margin-bottom: 10px">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 添加调度
+  </button>
+
+  <ng-template #offlineanalysis>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">添加离线统计程序</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <form>
+        <div class="form-group">
+          <label for="offlineAnalysisTitle">任务标题</label>
+          <input type="email" class="form-control" id="offlineAnalysisTitle" placeholder="Email">
+        </div>
+        <div class="form-group">
+          <label for="offlineAnalysisJar">选择程序</label>
+          <input type="password" class="form-control" id="offlineAnalysisJar" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">提交</button>
+      </form>
+
+    </div>
+  </ng-template>
+
+  <div class="grid grid-pad">
+    <div class="row table-responsive">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Username</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div>
+  <h3><span class="icon-uniE18E" aria-hidden="true" style="font-size: 20px;"></span> 支付订单</h3>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="icon-whatshot" aria-hidden="true"></span> 订单详情</h3>
+
+    </div>
+    <div class="panel-body">
+      <div class="row">
+
+
+        <div class="media" *ngFor="let movie of this.movies">
+          <div class="media-left" style="padding-left: 30px">
+            <a href="#">
+              <img class="media-object" class="thumbnail"  style="width: 64px; height: 64px;" src="{{imageServer}}images/{{movie.mid}}/poster.jpg">
+            </a>
+          </div>
+          <div class="media-body">
+            <h3 class="media-heading" style="text-overflow: clip">{{movie.name}}</h3>
+            <span>{{movie.descri}}</span>
+          </div>
+          <div class="media-right" style="vertical-align: middle;color: red;padding-right: 30px">
+            ${{movie.score}}
+          </div>
+          <div class="media-right" style="vertical-align: middle;color: red;padding-right: 30px" (click)="this.appCom.remove(movie.mid)"  *ngIf="rid == -1">
+            <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div>
+    <span style="font-size: 25px;font-weight: 600;color: brown;">总金额: ${{this.total()}}</span>
+    <button type="button" class="btn btn-danger" style="float: right; margin-top: 10px; margin-bottom: 10px" (click)="pay()" *ngIf="rid == -1">
+      <span class="glyphicon glyphicon-usd" aria-hidden="true"></span> 支付订单
+    </button>
+  </div>
+</div>
