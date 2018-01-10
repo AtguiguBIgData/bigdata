@@ -13,7 +13,7 @@ var core_1 = require("@angular/core");
 var movie_1 = require("../model/movie");
 var http_1 = require("@angular/common/http");
 var login_service_1 = require("../services/login.service");
-var tag_1 = require("../model/tag");
+var tag_1 = require("../model/comment");
 var router_1 = require("@angular/router");
 require("rxjs/add/operator/switchMap");
 var MdetailComponent = (function () {
@@ -51,7 +51,7 @@ var MdetailComponent = (function () {
                 tag.id=1;
                 tag.name="abc1111";
                 tag.sum=8;
-    
+
                 this.myTags.push(tag);
               }
             },
@@ -84,7 +84,7 @@ var MdetailComponent = (function () {
                 tag.id=1;
                 tag.name="abc1111";
                 tag.sum=8;
-    
+
                 this.myTags.push(tag);
               }
             },
@@ -117,7 +117,7 @@ var MdetailComponent = (function () {
                 tag.id=1;
                 tag.name="abc";
                 tag.sum=8;
-    
+
                 this.movieTags.push(tag);
                 this.movieTags.push(tag);
                 this.movieTags.push(tag);

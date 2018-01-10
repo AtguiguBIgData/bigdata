@@ -18,6 +18,10 @@ export class ExploreComponent implements OnInit {
 
   movies:Movie[]=[];
 
+  yeah=[];
+  language=[];
+  genres=[];
+
   ngOnInit() {
     this.router.params.subscribe(params => {
       if(params['type']=="search"){
@@ -47,7 +51,34 @@ export class ExploreComponent implements OnInit {
         this.title = "我的评分电影：";
         this.getMyRateMovies();
       }
+
     });
+  }
+
+  initOtherArray():void{
+    for (let movie of this.movies) {
+      var timeparam = movie.issue.split(",")
+      var yeahString = timeparam[timeparam.length - 1]
+
+      if(this.yeah.indexOf(yeahString) == -1){
+        this.yeah.push(yeahString)
+      }
+
+      var langs = movie.language.split("|")
+      for(let lan of langs){
+        if(this.language.indexOf(lan) == -1){
+          this.language.push(lan)
+        }
+      }
+
+      var gens = movie.genres.split("|")
+      for(let gen of gens){
+        if(this.genres.indexOf(gen) == -1){
+          this.genres.push(gen)
+        }
+      }
+
+    }
   }
 
   getMyRateMovies():void{
@@ -57,6 +88,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -67,11 +99,12 @@ export class ExploreComponent implements OnInit {
 
   getGenresMovies(category:String):void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/search?query='+category)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/genres?category='+category)
       .subscribe(
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -88,6 +121,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -103,6 +137,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -118,6 +153,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -132,6 +168,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -146,6 +183,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {
@@ -160,6 +198,7 @@ export class ExploreComponent implements OnInit {
         data => {
           if(data['success'] == true){
             this.movies = data['movies'];
+            this.initOtherArray()
           }
         },
         err => {

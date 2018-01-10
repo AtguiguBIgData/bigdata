@@ -13,11 +13,6 @@ export class LoginService {
   data = new Object;
 
   constructor(router:Router,http:HttpClient) {
-    /*this.user = new User;
-    this.user.id = 1;
-    this.user.username = '543293730@qq.com';
-    this.user.password = '543293730@qq.com';*/
-
     var ls = this;
     this.router = router;
     this.http = http;
@@ -28,9 +23,9 @@ export class LoginService {
           if( x.url.trim()=="/login" || x.url.trim()=="/register"){
 
           }else{
-            if(!ls.isLogin()){
-              ls.router.navigate(['/login']);
-            }
+            /*if(!ls.isLogin()){
+              ls.router.navigate(['/home']);
+            }*/
           }
         }
       } ,
@@ -47,9 +42,10 @@ export class LoginService {
 
   login(user:User):void {
     /*this.user = new User;
-    this.user.id = 1;
+    this.user.uid = 1761308791;
     this.user.username = "543293730@qq.com";
     this.user.password = "";
+    this.user.role = "user";
     this.router.navigate(['/home']);*/
     this.http
       .get(constant.BUSSINESS_SERVER_URL+'rest/users/login?username='+user.username+'&password='+user.password)
@@ -57,7 +53,10 @@ export class LoginService {
         data => {
           if(data['success'] == true){
             this.user = data['user'];
-            this.router.navigate(['/home']);
+            if(this.user.role == "user")
+              this.router.navigate(['/home']);
+            if(this.user.role == "admin")
+              this.router.navigate(['/analysis']);
           }
           this.data = data;
 
@@ -73,7 +72,7 @@ export class LoginService {
   register(user:User):void {
     //this.router.navigate(['/login']);
     this.http
-      .get(constant.BUSSINESS_SERVER_URL+'/rest/users/register?username='+user.username+'&password='+user.password)
+      .get(constant.BUSSINESS_SERVER_URL+'rest/users/register?username='+user.username+'&password='+user.password)
       .subscribe(
         data => {
           if(data['success'] == true){

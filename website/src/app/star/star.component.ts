@@ -12,6 +12,7 @@ export class StarComponent implements OnInit {
 
   @Input() currentValue : number=0;
   @Input() mid : number=0;
+
   tempValue : number = null;
   rating:boolean = false;
   setRate:boolean = false;
@@ -93,7 +94,7 @@ export class StarComponent implements OnInit {
     this.currentValue = index+1;
     this.rating = true;
 
-    this.httpService
+    /*this.httpService
       .get(constant.BUSSINESS_SERVER_URL+'/rest/movie/rate/'+this.mid+"?score="+this.currentValue+"&username="+this.loginService.user.username)
       .subscribe(
         data => {
@@ -104,8 +105,12 @@ export class StarComponent implements OnInit {
         err => {
           console.log('Somethi,g went wrong!');
         }
-      );
+      );*/
 
+  }
+
+  getCurrentValue():number{
+    return this.currentValue
   }
 
   leave():void{

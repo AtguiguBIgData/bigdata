@@ -7,27 +7,10 @@
     <div class="col-md-7">
       <h1 class="title">{{movie.name}}</h1>
 
-      <div class="menu" style="float: left">
-        <div class="btn-group">
-          <button type="button" style="background-color: #FFFFFF;border: none;padding-left: 1px" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="icon-stack2" aria-hidden="true" style="font-size: 20px"></span>
-          </button>
-          <ul class="dropdown-menu">
-            <li><a href="#">清除评分</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <app-star [currentValue]="movie.score" [mid]="movie.mid"></app-star>
-
-      <div class="row"></div>
-
-      <div class="row">
-        <div class="col-md-4">
-          <h4 class="small-title">平均评分</h4>
-          <p>{{movie.score}} 颗星</p>
-        </div>
-
+      <div class="row" style="margin-left: 5px">
+        <span class="glyphicon glyphicon-shopping-cart addcart" aria-hidden="true" (click)="this.appCom.add(movie)"> 加入购物车</span>
+        <hr/>
+        <span style="color: crimson;font-size: 25px;font-weight: bolder"> ${{movie.score}}</span>
       </div>
 
       <div class="row">
@@ -59,39 +42,58 @@
 
   </div>
 
-  <h3><span class="icon-pin4" aria-hidden="true" style="font-size: 20px;"></span> 我的标签</h3>
-  <div class="row youtag">
-    <div class="col-md-4">
-      <div class="input-group">
-        <input #tagname type="text" class="form-control" placeholder="Search for...">
-        <span class="input-group-btn">
-        <button class="btn btn-default" type="button" (click)="addMyTag(movie.mid,tagname.value)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-      </span>
-      </div><!-- /input-group -->
+  <h3 *ngIf="this.appCom.isLogin()"><span class="icon-pin4" aria-hidden="true" style="font-size: 20px;"></span> 我的评论</h3>
+  <div class="row youtag" *ngIf="this.appCom.isLogin()">
+    <div class="col-md-12">
+        <app-star #scorebar [currentValue]=0 [mid]=movie.mid></app-star>
+        <textarea #tagname class="form-control" rows="3" style="margin-bottom: 10px;"></textarea>
+        <button class="btn btn-default" type="button" (click)="addMyComment(movie.mid,tagname.value)"><span class="glyphicon glyphicon-plus" aria-hidden="true">提交</span></button>
     </div>
   </div>
 
-  <div class="row">
-    <div class="col-md-2" *ngFor="let myTag of myTags" style="margin-bottom: 10px">
-      <div class="btn-group btn-group-sm" role="group" aria-label="...">
-        <button type="button" class="btn btn-default">{{myTag.tag}}</button>
-        <button type="button" class="btn btn-default" (click)="removeMyTag(myTag.mid)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+  <h3><span class="glyphicon glyphicon-bullhorn" aria-hidden="true" style="font-size: 20px"></span> 大家的评论</h3>
+
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="icon-whatshot" aria-hidden="true"></span> 订单列表</h3>
+
+    </div>
+    <div class="panel-body">
+      <div class="row">
+
+        <table class="table table-hover table-bordered">
+          <thead>
+          <tr>
+            <th>评论UID</th>
+            <th>评论分数</th>
+            <th>评论描述</th>
+            <th>评论时间</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let movieCommnent of this.movieComments">
+            <th style="width: 100px">{{movieCommnent.uid}}</th>
+            <td style="width: 150px"><app-star [currentValue]=movieCommnent.score [mid]=movieCommnent.mid ></app-star></td>
+            <td>{{movieCommnent.tag}}</td>
+            <td style="width: 150px">{{movieCommnent.timestamp}}</td>
+          </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
 
-  <h3><span class="glyphicon glyphicon-bullhorn" aria-hidden="true" style="font-size: 20px"></span> 大家的标签</h3>
-  <div class="grid grid-pad">
+  <!--<div class="grid grid-pad">
     <div class="row">
-      <div class="col-md-2" *ngFor="let movieTag of movieTags" style="margin-bottom: 10px">
-        <div class="btn-group btn-group-sm" role="group" aria-label="...">
-          <!--<button type="button" class="btn btn-default">{{movieTag.sum}}+</button>-->
-          <button type="button" class="btn btn-default">{{movieTag.tag}}</button>
-          <button type="button" class="btn btn-default" (click)="addMyTag(movie.mid,movieTag.tag)"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></button>
-        </div>
+      <div class="col-md-12" *ngFor="let movieCommnent of this.movieComments" style="margin-bottom: 2px">
+
+
+
+        {{movieCommnent.tag}}
       </div>
     </div>
-  </div>
+  </div>-->
 
   <h3><span class="glyphicon glyphicon-film" aria-hidden="true" style="font-size: 20px;"></span> 相似推荐</h3>
   <p class="descri">MovieLens guess movies same with {{movie.name}}</p>

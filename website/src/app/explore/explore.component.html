@@ -2,6 +2,30 @@
 <hr/>
 <div class="grid grid-pad">
   <div class="row">
+    <table class="table table-striped">
+      <tr>
+        <th scope="row" style="width: 100px;">发行时间:</th>
+        <td>
+          <span class="label label-success" style="margin-right: 4px" *ngFor="let ye of yeah">{{ye}}</span>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">电影语言:</th>
+        <td>
+          <span class="label label-warning" style="margin-right: 4px" *ngFor="let lan of language">{{lan}}</span>
+        </td>
+      </tr>
+      <tr>
+        <th scope="row">电影类别:</th>
+        <td>
+          <span class="label label-danger" style="margin-right: 4px" *ngFor="let gen of genres">{{gen}}</span>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div class="grid grid-pad">
+  <div class="row">
     <div class="col-lg-2 col-md-2" *ngFor="let movie of movies" style="margin-bottom: 15px"><app-thumbnail [movie]="movie"></app-thumbnail></div>
   </div>
 </div>

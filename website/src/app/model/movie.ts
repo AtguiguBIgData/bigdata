@@ -3,9 +3,12 @@ export class Movie {
   name:string;
   picture: string;
   descri:string;
+  genres:string;
   language:string;
   timelong:string;
   issue:string;
   shoot:string;
   score:number;
+  directors:string;
+  actors:string;
 }

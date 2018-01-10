@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from "../services/login.service";
 import {HttpClient} from "@angular/common/http";
-import {Tag} from "../model/tag";
 import {constant} from "../model/constant";
 
 @Component({
@@ -13,7 +12,7 @@ export class TagsComponent implements OnInit {
 
   constructor(public loginService:LoginService,public httpService:HttpClient) { }
 
-  tags:Tag[] = [];
+  //tags:Tag[] = [];
 
   ngOnInit() {
     this.httpService
@@ -21,7 +20,7 @@ export class TagsComponent implements OnInit {
       .subscribe(
         data => {
           if(data['success'] == true){
-            this.tags = data['tags'];
+            //this.tags = data['tags'];
           }
         },
         err => {

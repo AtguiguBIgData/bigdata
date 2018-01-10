@@ -1,45 +1,99 @@
 <div [hidden]="isLoginFirst()">
-  <h3><span class="icon-uniE18E" aria-hidden="true" style="font-size: 20px;"></span> 实时推荐</h3>
-  <p class="descri">MovieLens guess what movies you like <a [routerLink]="['/explore', { type: 'guess' }]" >更多...</a></p>
-  <div class="grid grid-pad">
-    <div class="row">
-      <div class="col-lg-2 col-md-2" *ngFor="let guessMovie of guessMovies"><app-thumbnail [movie]="guessMovie"></app-thumbnail></div>
+
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
+      <div class="list-group">
+        <a class="list-group-item active" [routerLink]="['/explore', { type: 'genres',category:'action' }]">动作片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'adventure' }]" >冒险经历</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'animation' }]" >动画片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'comedy' }]" >喜剧片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'documentary' }]" >纪录片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'family' }]" >家庭片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'history' }]" >历史片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'horror' }]" >恐怖片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'mystery' }]" >悬疑片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'romance' }]" >爱情片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'science' }]" >科幻片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'thriller' }]" >惊悚片</a>
+        <a class="list-group-item" [routerLink]="['/explore', { type: 'genres',category:'war' }]" >战争片</a>
+      </div>
+    </div>
+    <div class="col-lg-9 col-md-9">
+      <carousel>
+        <slide *ngFor="let hotMovie of hotMovies">
+          <img class="thumbnail" src="{{imageServer}}images/{{hotMovie.mid}}/picture.jpg" alt="First slide" style="display: block; width: 100%;">
+          <div class="carousel-caption d-none d-md-block">
+            <h3>{{hotMovie.name}}</h3>
+            <p>{{hotMovie.descri}}</p>
+          </div>
+        </slide>
+      </carousel>
     </div>
   </div>
 
-  <h3><span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size: 20px;"></span> 离线推荐</h3>
-  <p class="descri">the movies most recently added to MovieLens <a [routerLink]="['/explore', { type: 'wish' }]" >更多...</a></p>
-  <div class="grid grid-pad">
-    <div class="row">
-      <div class="col-lg-2 col-md-2" *ngFor="let wishMovie of wishMovies"><app-thumbnail [movie]="wishMovie"></app-thumbnail></div>
-    </div>
-  </div>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="icon-whatshot" aria-hidden="true"></span> 热门影片
+        <p class="descri" style="float: right;"><a [routerLink]="['/explore', { type: 'hot' }]" style="color: white">更多...</a></p></h3>
 
-  <h3><span class="icon-whatshot" aria-hidden="true" style="font-size: 20px;"></span> 热门推荐</h3>
-  <p class="descri">MovieLens recommends these movies <a [routerLink]="['/explore', { type: 'hot' }]" >更多...</a></p>
-  <div class="grid grid-pad">
-    <div class="row">
-      <div class="col-lg-2 col-md-2" *ngFor="let hotMovie of hotMovies">
-        <app-thumbnail [movie]="hotMovie"></app-thumbnail>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-2" *ngFor="let hotMovie of hotMovies">
+          <app-thumbnail [movie]="hotMovie"></app-thumbnail>
+        </div>
       </div>
     </div>
   </div>
 
-  <h3><span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 20px;"></span> 评分最多</h3>
-  <p class="descri">improve your recommendations by rating as many of these movies as you can <a [routerLink]="['/explore', { type: 'rate' }]" >更多...</a></p>
-  <div class="grid grid-pad">
-    <div class="row">
-      <div class="col-lg-2 col-md-2" *ngFor="let rateMoreMovie of rateMoreMovies"><app-thumbnail [movie]="rateMoreMovie"></app-thumbnail></div>
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="icon-uniE18E" aria-hidden="true"></span> 猜你喜欢
+        <p class="descri" style="float: right"><a [routerLink]="['/explore', { type: 'guess' }]" >更多...</a></p></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-2" *ngFor="let guessMovie of guessMovies"><app-thumbnail [movie]="guessMovie"></app-thumbnail></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-info">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="glyphicon glyphicon-facetime-video" aria-hidden="true"></span> 新上影片
+        <p class="descri" style="float: right"><a [routerLink]="['/explore', { type: 'new' }]" >更多...</a></p>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-2" *ngFor="let newMovie of newMovies"><app-thumbnail [movie]="newMovie"></app-thumbnail></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-warning">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> 优质电影
+        <p class="descri" style="float: right"><a [routerLink]="['/explore', { type: 'rate' }]" >更多...</a></p>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-2" *ngFor="let rateMoreMovie of rateMoreMovies"><app-thumbnail [movie]="rateMoreMovie"></app-thumbnail></div>
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> 离线推荐
+        <p class="descri" style="float: right"><a [routerLink]="['/explore', { type: 'wish' }]" >更多...</a></p>
+      </h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-lg-2 col-md-2" *ngFor="let wishMovie of wishMovies"><app-thumbnail [movie]="wishMovie"></app-thumbnail></div>
+      </div>
     </div>
   </div>
 
-  <h3><span class="glyphicon glyphicon-facetime-video" aria-hidden="true" style="font-size: 20px;"></span> 最新电影</h3>
-  <p class="descri">movies released in last 90 days <a [routerLink]="['/explore', { type: 'new' }]" >更多...</a></p>
-  <div class="grid grid-pad">
-    <div class="row">
-      <div class="col-lg-2 col-md-2" *ngFor="let newMovie of newMovies"><app-thumbnail [movie]="newMovie"></app-thumbnail></div>
-    </div>
-  </div>
 </div>
 
 <!-- Modal -->

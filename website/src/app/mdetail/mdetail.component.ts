@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Movie} from "../model/movie";
 import {HttpClient} from "@angular/common/http";
 import {LoginService} from "../services/login.service";
-import {Tag} from "../model/tag";
+import {Comment} from "../model/comment";
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import 'rxjs/add/operator/switchMap';
 import {constant} from "../model/constant";
+import {AppComponent} from "../app.component";
+import {StarComponent} from "../star/star.component";
 
 @Component({
   selector: 'app-mdetail',
@@ -16,15 +18,17 @@ export class MdetailComponent implements OnInit {
 
   movie: Movie = new Movie;
   sameMovies: Movie[] = [];
-  myTags: Tag[] = [];
-  movieTags: Tag[] = [];
+  movieComments: Comment[] = [];
 
   imageServer = constant.IMAGE_SERVER_URL;
+
+  @ViewChild(StarComponent) starScore: StarComponent;
 
   constructor(
     private route:ActivatedRoute,
     private httpService : HttpClient,
-    private loginService: LoginService
+    private loginService: LoginService,
+    public appCom:AppComponent
   ) {}
 
   ngOnInit(): void {
@@ -34,18 +38,26 @@ export class MdetailComponent implements OnInit {
         var id = params['id'];
         this.getMovieInfo(id);
         this.getSameMovies(id);
-        this.getMyTags(id);
         this.getMovieTags(id);
     });
   }
 
-  addMyTag(id:number, name:string):void{
+  addMyComment(id:number, name:string):void{
+
+    var score = this.starScore.getCurrentValue();
+
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'/rest/movie/newtag/'+ id +'?username='+this.loginService.user.username+'&tagname='+name)
+      .get(constant.BUSSINESS_SERVER_URL+'/rest/movie/comment/'+ id +'?uid='+this.loginService.user.uid+'&comment='+name+'&score='+score)
       .subscribe(
         data => {
           if(data['success'] == true){
-            this.myTags.push(data['tag']);
+            let comment = new Comment()
+            comment.mid = id;
+            comment.score = score;
+            comment.tag = name;
+            comment.uid = this.loginService.user.uid;
+            comment.timestamp = new Date().getSeconds()
+            this.movieComments.push(comment);
           }
         },
         err => {
@@ -63,29 +75,14 @@ export class MdetailComponent implements OnInit {
       }
     }*/
   }
-  getMyTags(id:number):void{
-    this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'rest/movie/mytag/'+id+'?username='+this.loginService.user.username)
-      .subscribe(
-        data => {
-          if(data['success'] == true){
-            this.myTags = data["tags"]
-          }
-        },
-        err => {
-          console.log('Somethi,g went wrong!');
-        }
-      );
-  }
-
 
   getMovieTags(id:number):void{
     this.httpService
-      .get(constant.BUSSINESS_SERVER_URL+'/rest/movie/tag/'+id)
+      .get(constant.BUSSINESS_SERVER_URL+'/rest/movie/tags/'+id)
       .subscribe(
         data => {
           if(data['success'] == true){
-            this.movieTags = data['tags'];
+            this.movieComments = data['comments'];
           }
         },
         err => {

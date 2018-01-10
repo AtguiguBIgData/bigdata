@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Movie} from "../model/movie";
 import {constant} from "../model/constant";
+import {AppComponent} from "../app.component";
 
 @Component({
   selector: 'app-thumbnail',
@@ -15,7 +16,7 @@ export class ThumbnailComponent implements OnInit {
 
   @Input() movie: Movie = new Movie;
 
-  constructor() {
+  constructor(public appCom:AppComponent) {
 
   }
 
@@ -29,6 +30,10 @@ export class ThumbnailComponent implements OnInit {
 
   leave():void{
     this.detail = false;
+  }
+
+  addCat():void{
+
   }
 
 }

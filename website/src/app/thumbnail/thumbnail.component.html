@@ -41,7 +41,12 @@
 
 
   <div class="row" style="margin: 0px;">
-    <div class="menu">
+    <div style="margin: 4px 4px;">
+      <span class="glyphicon glyphicon-shopping-cart addcart" aria-hidden="true" (click)="this.appCom.add(movie)"> 加入购物车</span>
+      <span style="float: right; color: darkred"> ${{movie.score}}</span>
+    </div>
+
+    <!--<div class="menu">
       <div class="btn-group">
         <button type="button" style="background-color: #F1F1F1;border: none;padding-left: 1px" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <span class="icon-stack2" aria-hidden="true" style="font-size: 20px"></span>
@@ -50,11 +55,11 @@
           <li><a href="#">清除评分</a></li>
         </ul>
       </div>
-    </div>
+    </div>-->
 
-    <div class="star">
+    <!--<div class="star">
       <app-star [currentValue]="movie.score" [mid]="movie.mid"></app-star>
-    </div>
+    </div>-->
   </div>
 
 </div>

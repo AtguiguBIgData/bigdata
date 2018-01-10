@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
   rateMoreMovies: Movie[] = [];
   wishMovies: Movie[] = [];
 
-
+  imageServer = constant.IMAGE_SERVER_URL;
 
   genres = [
     {

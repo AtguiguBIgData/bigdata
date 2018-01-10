@@ -30,3 +30,7 @@
   font-size: 12px;
 }
 
+.addcart:hover{
+  color: red;
+  cursor: pointer;
+}
