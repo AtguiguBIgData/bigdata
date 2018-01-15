@@ -1,7 +1,7 @@
 package com.atguigu.offline
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model.MySqlConfig
+import com.atguigu.scala.model.MySqlConfig
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
 import org.apache.spark.rdd.RDD

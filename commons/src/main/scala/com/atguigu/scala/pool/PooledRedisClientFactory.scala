@@ -4,7 +4,7 @@
  * Author: wuyufei.
  */
 
-package com.atguigu.commons.pool
+package com.atguigu.scala.pool
 
 import com.atguigu.commons.ConfigManager
 import org.apache.commons.pool2.impl.{DefaultPooledObject, GenericObjectPool, GenericObjectPoolConfig}

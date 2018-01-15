@@ -9,7 +9,7 @@ package com.atguigu.stream
 import java.util.Date
 
 import com.atguigu.commons.ConfigManager
-import com.atguigu.commons.utils.DateUtils
+import com.atguigu.scala.utils.DateUtils
 import kafka.api.{OffsetRequest, PartitionOffsetRequestInfo, TopicMetadataRequest}
 import kafka.common.TopicAndPartition
 import kafka.consumer.SimpleConsumer

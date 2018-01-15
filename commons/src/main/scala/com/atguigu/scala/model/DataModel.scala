@@ -4,7 +4,7 @@
  * Author: wuyufei.
  */
 
-package com.atguigu.commons.model
+package com.atguigu.scala.model
 
 /**
   * Movie Class 电影类

@@ -3,8 +3,8 @@ package com.atguigu.offline
 import java.text.DecimalFormat
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model.{MovieRecs, MySqlConfig, Recommendation, UserRecs}
-import com.atguigu.commons.pool.CreateRedisPool
+import com.atguigu.scala.model.{MovieRecs, MySqlConfig, Recommendation, UserRecs}
+import com.atguigu.scala.pool.CreateRedisPool
 import org.apache.spark.SparkConf
 import org.apache.spark.mllib.recommendation.{ALS, MatrixFactorizationModel, Rating}
 import org.apache.spark.sql.{Dataset, SaveMode, SparkSession}

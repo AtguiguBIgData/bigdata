@@ -4,7 +4,7 @@
  * Author: wuyufei.
  */
 
-package com.atguigu.commons.pool
+package com.atguigu.scala.pool
 
 import java.sql.{Connection, DriverManager, PreparedStatement, ResultSet}
 

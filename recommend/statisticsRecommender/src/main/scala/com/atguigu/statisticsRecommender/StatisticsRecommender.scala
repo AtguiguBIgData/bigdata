@@ -3,7 +3,7 @@ package com.atguigu.statisticsRecommender
 import java.text.{DecimalFormat}
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model._
+import com.atguigu.scala.model._
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{Dataset, SaveMode, SparkSession}
 

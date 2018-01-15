@@ -9,8 +9,8 @@ package com.atguigu.page
 import java.util.UUID
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model.UserVisitAction
-import com.atguigu.commons.utils.{DateUtils, NumberUtils, ParamUtils}
+import com.atguigu.scala.model.UserVisitAction
+import com.atguigu.scala.utils.{DateUtils, NumberUtils, ParamUtils}
 import net.sf.json.JSONObject
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.{SaveMode, SparkSession}

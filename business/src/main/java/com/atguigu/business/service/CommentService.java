@@ -1,15 +1,10 @@
 package com.atguigu.business.service;
 
 import com.atguigu.business.model.domain.Comment;
-import com.atguigu.business.model.domain.Order;
-import com.atguigu.business.model.domain.User;
-import com.atguigu.business.model.request.MovieRatingRequest;
 import com.atguigu.commons.Constants;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;

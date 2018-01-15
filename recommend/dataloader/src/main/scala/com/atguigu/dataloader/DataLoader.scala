@@ -3,7 +3,7 @@ package com.atguigu.dataloader
 import java.net.InetAddress
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model._
+import com.atguigu.scala.model._
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SaveMode, SparkSession}
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest

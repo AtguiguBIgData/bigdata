@@ -9,8 +9,8 @@ package com.atguigu.session
 import java.util.{Date, UUID}
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.model._
-import com.atguigu.commons.utils._
+import com.atguigu.scala.model._
+import com.atguigu.scala.utils._
 import net.sf.json.JSONObject
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD

@@ -4,7 +4,7 @@
  * Author: wuyufei.
  */
 
-package com.atguigu.commons.utils
+package com.atguigu.scala.utils
 
 import java.io.File
 import java.text.SimpleDateFormat

@@ -9,7 +9,7 @@ package com.atguigu.stream
 import java.sql.ResultSet
 
 import com.atguigu.commons.ConfigManager
-import com.atguigu.commons.pool.{CreateMySqlPool, QueryCallback}
+import com.atguigu.scala.pool.{CreateMySqlPool, QueryCallback}
 
 import scala.collection.mutable.ArrayBuffer
 

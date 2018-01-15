@@ -9,7 +9,7 @@ package com.atguigu.product
 import java.util.UUID
 
 import com.atguigu.commons.{ConfigManager, Constants}
-import com.atguigu.commons.utils.ParamUtils
+import com.atguigu.scala.utils.ParamUtils
 import net.sf.json.JSONObject
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD

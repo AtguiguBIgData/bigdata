@@ -8,8 +8,8 @@ package com.atguigu.mock
 
 import java.util.UUID
 
-import com.atguigu.commons.model.{ProductInfo, UserInfo, UserVisitAction}
-import com.atguigu.commons.utils.{DateUtils, StringUtils}
+import com.atguigu.scala.model.{ProductInfo, UserInfo, UserVisitAction}
+import com.atguigu.scala.utils.{DateUtils, StringUtils}
 import org.apache.spark.SparkConf
 import org.apache.spark.sql.{DataFrame, SparkSession}
 

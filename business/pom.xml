@@ -11,7 +11,7 @@
 
     <artifactId>business</artifactId>
 
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <jetty.version>9.2.15.v20160210</jetty.version>

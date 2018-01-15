@@ -2,8 +2,8 @@ package com.atguigu.streamingRecommender
 
 import java.sql.ResultSet
 
-import com.atguigu.commons.model.MySqlConfig
-import com.atguigu.commons.pool.{CreateMySqlPool, CreateRedisPool, MySqlProxy, QueryCallback}
+import com.atguigu.scala.model.MySqlConfig
+import com.atguigu.scala.pool.{CreateMySqlPool, CreateRedisPool, MySqlProxy, QueryCallback}
 import com.atguigu.commons.{ConfigManager, Constants}
 import kafka.api.{OffsetRequest, PartitionOffsetRequestInfo, TopicMetadataRequest}
 import kafka.common.TopicAndPartition
